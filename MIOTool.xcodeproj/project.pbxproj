@@ -1,0 +1,311 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		14A13CB61F2E679A001982B6 /* Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A13CB41F2E6799001982B6 /* Options.swift */; };
+		14A13CB71F2E679A001982B6 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A13CB51F2E6799001982B6 /* Common.swift */; };
+		14A13CE21F2E6ABF001982B6 /* CreateModelSubclassesCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A13CE01F2E6ABF001982B6 /* CreateModelSubclassesCommand.swift */; };
+		14A13CE31F2E6ABF001982B6 /* CreateModelTemplateCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A13CE11F2E6ABF001982B6 /* CreateModelTemplateCommand.swift */; };
+		14A13CE51F2E6ACB001982B6 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A13CE41F2E6ACB001982B6 /* Model.swift */; };
+		14A13CE71F2E6ADB001982B6 /* CreateProjectTemplateCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A13CE61F2E6ADB001982B6 /* CreateProjectTemplateCommand.swift */; };
+		14A13CEB1F2E6AF2001982B6 /* CreateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A13CE81F2E6AF1001982B6 /* CreateModel.swift */; };
+		14A13CEC1F2E6AF2001982B6 /* CreateProject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A13CE91F2E6AF1001982B6 /* CreateProject.swift */; };
+		14A13CED1F2E6AF2001982B6 /* Create.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A13CEA1F2E6AF1001982B6 /* Create.swift */; };
+		14A13CEF1F2E6B03001982B6 /* Deploy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A13CEE1F2E6B03001982B6 /* Deploy.swift */; };
+		14A13CF21F2E6B0A001982B6 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A13CF01F2E6B0A001982B6 /* Command.swift */; };
+		14A13CF31F2E6B0A001982B6 /* DeployCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A13CF11F2E6B0A001982B6 /* DeployCommand.swift */; };
+		OBJ_17 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_8 /* main.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		14A13CB41F2E6799001982B6 /* Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Options.swift; sourceTree = "<group>"; };
+		14A13CB51F2E6799001982B6 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		14A13CE01F2E6ABF001982B6 /* CreateModelSubclassesCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateModelSubclassesCommand.swift; sourceTree = "<group>"; };
+		14A13CE11F2E6ABF001982B6 /* CreateModelTemplateCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateModelTemplateCommand.swift; sourceTree = "<group>"; };
+		14A13CE41F2E6ACB001982B6 /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		14A13CE61F2E6ADB001982B6 /* CreateProjectTemplateCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateProjectTemplateCommand.swift; path = Sources/CreateProjectTemplateCommand.swift; sourceTree = SOURCE_ROOT; };
+		14A13CE81F2E6AF1001982B6 /* CreateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateModel.swift; sourceTree = "<group>"; };
+		14A13CE91F2E6AF1001982B6 /* CreateProject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProject.swift; sourceTree = "<group>"; };
+		14A13CEA1F2E6AF1001982B6 /* Create.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Create.swift; sourceTree = "<group>"; };
+		14A13CEE1F2E6B03001982B6 /* Deploy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deploy.swift; sourceTree = "<group>"; };
+		14A13CF01F2E6B0A001982B6 /* Command.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		14A13CF11F2E6B0A001982B6 /* DeployCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeployCommand.swift; sourceTree = "<group>"; };
+		OBJ_11 /* MIOTool */ = {isa = PBXFileReference; lastKnownFileType = text; path = MIOTool; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_18 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		14A13CD91F2E69EA001982B6 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				14A13CF01F2E6B0A001982B6 /* Command.swift */,
+				14A13CF11F2E6B0A001982B6 /* DeployCommand.swift */,
+				14A13CDA1F2E69F5001982B6 /* Project */,
+				14A13CDB1F2E6A02001982B6 /* Model */,
+			);
+			name = Commands;
+			sourceTree = "<group>";
+		};
+		14A13CDA1F2E69F5001982B6 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				14A13CE61F2E6ADB001982B6 /* CreateProjectTemplateCommand.swift */,
+			);
+			path = Project;
+			sourceTree = "<group>";
+		};
+		14A13CDB1F2E6A02001982B6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14A13CE41F2E6ACB001982B6 /* Model.swift */,
+				14A13CE01F2E6ABF001982B6 /* CreateModelSubclassesCommand.swift */,
+				14A13CE11F2E6ABF001982B6 /* CreateModelTemplateCommand.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		14A13CDE1F2E6A4F001982B6 /* Deploy */ = {
+			isa = PBXGroup;
+			children = (
+				14A13CEE1F2E6B03001982B6 /* Deploy.swift */,
+			);
+			name = Deploy;
+			sourceTree = "<group>";
+		};
+		14A13CDF1F2E6A59001982B6 /* Create */ = {
+			isa = PBXGroup;
+			children = (
+				14A13CEA1F2E6AF1001982B6 /* Create.swift */,
+				14A13CE81F2E6AF1001982B6 /* CreateModel.swift */,
+				14A13CE91F2E6AF1001982B6 /* CreateProject.swift */,
+			);
+			name = Create;
+			sourceTree = "<group>";
+		};
+		OBJ_10 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_11 /* MIOTool */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_7 /* Sources */,
+				OBJ_9 /* Tests */,
+				OBJ_10 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* main.swift */,
+				14A13CB51F2E6799001982B6 /* Common.swift */,
+				14A13CB41F2E6799001982B6 /* Options.swift */,
+				14A13CD91F2E69EA001982B6 /* Commands */,
+				14A13CDF1F2E6A59001982B6 /* Create */,
+				14A13CDE1F2E6A4F001982B6 /* Deploy */,
+			);
+			path = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_9 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		OBJ_12 /* MIOTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_13 /* Build configuration list for PBXNativeTarget "MIOTool" */;
+			buildPhases = (
+				OBJ_16 /* Sources */,
+				OBJ_18 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MIOTool;
+			productName = MIOTool;
+			productReference = OBJ_11 /* MIOTool */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "MIOTool" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5;
+			productRefGroup = OBJ_10 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				OBJ_12 /* MIOTool */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				14A13CEC1F2E6AF2001982B6 /* CreateProject.swift in Sources */,
+				14A13CE31F2E6ABF001982B6 /* CreateModelTemplateCommand.swift in Sources */,
+				14A13CEB1F2E6AF2001982B6 /* CreateModel.swift in Sources */,
+				14A13CB61F2E679A001982B6 /* Options.swift in Sources */,
+				14A13CE71F2E6ADB001982B6 /* CreateProjectTemplateCommand.swift in Sources */,
+				14A13CE21F2E6ABF001982B6 /* CreateModelSubclassesCommand.swift in Sources */,
+				14A13CE51F2E6ACB001982B6 /* Model.swift in Sources */,
+				14A13CF31F2E6B0A001982B6 /* DeployCommand.swift in Sources */,
+				14A13CB71F2E679A001982B6 /* Common.swift in Sources */,
+				14A13CEF1F2E6B03001982B6 /* Deploy.swift in Sources */,
+				OBJ_17 /* main.swift in Sources */,
+				14A13CED1F2E6AF2001982B6 /* Create.swift in Sources */,
+				14A13CF21F2E6B0A001982B6 /* Command.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = MIOTool.xcodeproj/MIOTool_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				TARGET_NAME = MIOTool;
+			};
+			name = Debug;
+		};
+		OBJ_15 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = MIOTool.xcodeproj/MIOTool_Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(TOOLCHAIN_DIR)/usr/lib/swift/macosx @executable_path";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_FORCE_DYNAMIC_LINK_STDLIB = YES;
+				SWIFT_FORCE_STATIC_LINK_STDLIB = NO;
+				TARGET_NAME = MIOTool;
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "-DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = SWIFT_PACKAGE;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_13 /* Build configuration list for PBXNativeTarget "MIOTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_14 /* Debug */,
+				OBJ_15 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		OBJ_2 /* Build configuration list for PBXProject "MIOTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}
