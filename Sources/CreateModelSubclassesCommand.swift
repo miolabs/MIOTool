@@ -12,7 +12,7 @@ func CreateModelSubClasses() -> Command? {
     
     var fileName:String? = NextArg()
     
-    if fileName == nil {
+    if (fileName == nil) {
         fileName = "/datamodel.xml"
     }
     
@@ -23,6 +23,9 @@ class CreateModelSubClassesCommand : Command, XMLParserDelegate {
     
     var fileContent:String = "";
     var filename:String = "";
+    
+    var currentClassName:String = "";
+    var currentClassEntityName:String = "";
     
     var modelPath:String?;
     var modelFilename:String;
@@ -48,10 +51,11 @@ class CreateModelSubClassesCommand : Command, XMLParserDelegate {
         
         if (elementName == "entity") {
             
-            let filename = attributeDict["name"];
+            let filename = attributeDict["name"]
             let classname = attributeDict["representedClassName"]
+            let parentName = attributeDict["parentEntity"]
             
-            openModelEntity(filename:filename!, classname:classname!);
+            openModelEntity(filename:filename!, classname:classname!, parentName:parentName)
         }
         else if (elementName == "attribute") {
             
@@ -88,21 +92,51 @@ class CreateModelSubClassesCommand : Command, XMLParserDelegate {
     
     }
     
-    private func openModelEntity(filename:String, classname:String) {
+    private func openModelEntity(filename:String, classname:String, parentName:String?) {
     
-        self.filename = "/\(filename)ManagedObject.ts";
-        let cn = classname + "ManagedObject";
+        self.filename = "/\(filename)_ManagedObject.ts";
+        let cn = classname + "_ManagedObject";
+        self.currentClassEntityName = cn;
+        self.currentClassName = classname;
+        
+        let parentObject = parentName ?? "MIOManagedObject"
         
         fileContent = "\n";
+        
+        if parentName != nil {
+            fileContent += "\n/// <reference path=\"\(parentName!).ts\" />\n"
+        }
+        
+        fileContent += "\n";
         fileContent += "// Generated class \(cn)\n";
         fileContent += "\n";
-        fileContent += "class \(cn) extends MIOManagedObject {\n";
+        fileContent += "class \(cn) extends \(parentObject)\n{\n";
     }
     
     private func appendAttribute(name:String, type:String, optional:String, defaultValue:String?) {
 
         var dv:String;
-        var t = ":" + type;
+        var t = ":"
+        
+        switch type {
+        case "Integer",
+             "Float",
+             "Number":
+            t += "number"
+            
+        case "String":
+            t += type.lowercased()
+            
+        case "Boolean":
+             t += type.lowercased()
+            
+        case "Array",
+             "Dictionary":
+            t = ""
+            
+        default:
+            t += type
+        }
         
         if (defaultValue == nil) {
             dv = " = null;";
@@ -130,27 +164,57 @@ class CreateModelSubClassesCommand : Command, XMLParserDelegate {
         fileContent += "\n";
         fileContent += "    // Property: \(name)\n";
         // Var
-        fileContent += "    private _\(name)\(t)\(dv)\n";
+        //fileContent += "    protected _\(name)\(t)\(dv)\n";
         // Setter
         fileContent += "    set \(name)(value\(t)) {\n";
-        fileContent += "        this.setValue('_\(name)', value);\n";
+        fileContent += "        this.setValueForKey(value, '\(name)');\n";
         fileContent += "    }\n";
     
         // Getter
         fileContent += "    get \(name)()\(t) {\n";
-        fileContent += "        return this.getValue('_\(name)');\n";
+        fileContent += "        return this.valueForKey('\(name)');\n";
+        fileContent += "    }\n";
+
+        // Setter raw value
+        fileContent += "    set \(name)PrimitiveValue(value\(t)) {\n";
+        fileContent += "        this.setPrimitiveValueForKey(value, '\(name)');\n";
         fileContent += "    }\n";
         
         // Getter raw value
-        fileContent += "    get \(name)RawValue()\(t) {\n";
-        fileContent += "        return this._\(name);\n";
+        fileContent += "    get \(name)PrimitiveValue()\(t) {\n";
+        fileContent += "        return this.primitiveValueForKey('\(name)');\n";
         fileContent += "    }\n";
     }
     
     private func appendRelationship(name:String, destinationEntity:String, toMany:String, optional:String) {
     
         if (toMany == "NO") {
-            appendAttribute(name:name, type:destinationEntity, optional:optional, defaultValue:nil);
+            //appendAttribute(name:name, type:destinationEntity, optional:optional, defaultValue:nil);
+            fileContent += "    // Relationship: \(name)\n";
+            // Var
+            //fileContent += "    protected _\(name):\(destinationEntity) = null;\n";
+
+            // Setter
+            fileContent += "    set \(name)(value:\(destinationEntity)) {\n";
+            fileContent += "        this.setValueForKey(value, '\(name)');\n";
+            fileContent += "    }\n";
+            
+            // Getter
+            fileContent += "    get \(name)():\(destinationEntity) {\n";
+            fileContent += "        return this.valueForKey('\(name)') as \(destinationEntity);\n";
+            fileContent += "    }\n";
+            
+//            // Setter raw value
+//            fileContent += "    set \(name)PrimitiveValue(value\(t)) {\n";
+//            fileContent += "        this.setPrimitiveValueForKey(value, '\(name)');\n";
+//            fileContent += "    }\n";
+//
+//
+//            // Getter raw value
+//            fileContent += "    get \(name)PrimitiveValue()\(t) {\n";
+//            fileContent += "        return this.primitiveValueForKey('\(name)');\n";
+//            fileContent += "    }\n";
+
         }
         else{
             
@@ -161,27 +225,27 @@ class CreateModelSubClassesCommand : Command, XMLParserDelegate {
             
             fileContent += "    // Relationship: \(name)\n";
             // Var
-            fileContent += "    private _\(name) = [\(destinationEntity)];\n";
+            fileContent += "    protected _\(name):MIOManagedObjectSet = null;\n";
             // Getter
-            fileContent += "    get \(name)():[\(destinationEntity)]  {\n";
-            fileContent += "        return this.getValue('_\(name)');\n";
+            fileContent += "    get \(name)():MIOManagedObjectSet {\n";
+            fileContent += "        return this.valueForKey('\(name)');\n";
             fileContent += "    }\n";
             // Add
             fileContent += "    add\(cname)Object(value:\(destinationEntity)) {\n";
-            fileContent += "        this.addObject('_\(name)', value);\n";
+            fileContent += "        this._addObjectForKey(value, '\(name)');\n";
             fileContent += "    }\n";
             // Remove
             fileContent += "    remove\(cname)Object(value:\(destinationEntity)) {\n";
-            fileContent += "        this.removeObject('_\(name)', value);\n";
+            fileContent += "        this._removeObjectForKey(value, '\(name)');\n";
             fileContent += "    }\n";
             // Add objects
-            fileContent += "    add\(cname)(value:[\(destinationEntity)]) {\n";
-            fileContent += "        this.addObjects('_\(name)', value);\n";
-            fileContent += "    }\n";
+//            fileContent += "    add\(cname)(value:MIOMOanagedObjectSet) {\n";
+//            fileContent += "        this.setValueForKey(value, '\(name)');\n";
+//            fileContent += "    }\n";
             // Remove objects
-            fileContent += "    remove\(cname)(value:\(destinationEntity)) {\n";
-            fileContent += "        this.removeObjects('_\(name)', value);\n";
-            fileContent += "    }\n";
+//            fileContent += "    remove\(cname)(value:MIOSet) {\n";
+//            fileContent += "        this.removeObjects('\(name)', value);\n";
+//            fileContent += "    }\n";
         }
         
     }
@@ -192,7 +256,22 @@ class CreateModelSubClassesCommand : Command, XMLParserDelegate {
         
         let path = modelPath! + filename;
         //Write to disc
-        WriteTextFile(content:fileContent, path:path);
+        WriteTextFile(content:fileContent, path:path)
+        
+        let fp = modelPath! + "/" + self.currentClassName + ".ts"
+        if (FileManager.default.fileExists(atPath:fp) == false) {
+            // Create Subclass in case that is not already create
+            var content = ""
+            content += "//\n"
+            content += "// Generated class \(self.currentClassName)\n"
+            content += "//\n"
+            content += "\n/// <reference path=\"\(self.currentClassEntityName).ts\" />\n"
+            content += "\nclass \(self.currentClassName) extends \(self.currentClassEntityName)\n"
+            content += "{\n"
+            content += "\n}\n";
+
+            WriteTextFile(content: content, path: fp)
+        }
     }
 
 }
